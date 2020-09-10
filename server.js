@@ -68,4 +68,4 @@ app.post('/api/deleteAllTodo', (req, res) => {
 
 const port = process.env.PORT || 3001;
 
-app.listen(3001, () => console.log('server listening at 3001'));
+app.listen(port, () => console.log('server listening at 3001'));
