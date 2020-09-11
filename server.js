@@ -3,8 +3,16 @@ const redis = require('redis');
 const {toggleStatus, getDefault} = require('./statusIterator');
 
 const app = express();
+const getRedisClient = function() {
+  if (process.env.REDISCLOUD_URL) {
+    return redis.createClient(process.env.REDISCLOUD_URL, {
+      no_ready_check: true
+    });
+  }
+  return redis.createClient();
+};
 
-const client = redis.createClient({db: 1});
+const client = getRedisClient();
 
 const defaultTodoList = () => ({title: 'Todo', todoList: [], lastTaskId: 0});
 
