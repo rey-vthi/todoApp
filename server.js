@@ -30,7 +30,7 @@ const saveTodoList = function(req, res) {
 };
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('build'));
 
 app.get('/api/getAllTodo', (req, res) => {
   res.json(req.app.locals.Todo);
